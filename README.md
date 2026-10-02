@@ -1,26 +1,50 @@
+<div align="center">
+
 # Secmentum
 
-**A customizable internship assessment tool.**
+### A customizable internship assessment tool
 
 [![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Express](https://img.shields.io/badge/Express-5-111111?logo=express)](https://expressjs.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Express](https://img.shields.io/badge/Express-5-111111?logo=express&logoColor=white)](https://expressjs.com/)
+[![Cloudflare R2](https://img.shields.io/badge/Cloudflare_R2-Optional-F38020?logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/r2/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2563EB.svg)](LICENSE)
 
-Secmentum is an open-source starter for timed candidate assessments. It includes sequential stages, configurable questions, fullscreen and tab-change checks, camera/microphone recording, resilient browser-side recording chunks, and optional private Cloudflare R2 storage.
+Build branded, timed internship assessments with configurable stages, candidate recording, and optional private object storage.
 
-> This repository is a demo/starter, not a production hiring platform. It has no admin panel, database, scoring engine, tenant isolation, or automated hiring decisions.
+</div>
 
-## Highlights
+## Overview
 
-- One JSON file controls branding, stages, durations, and questions.
-- Three sample stages: Work Style, English Communication, and Problem Solving.
-- Candidate access-code flow with server-side sessions.
-- Camera and microphone consent before each recorded stage.
-- Recording chunks kept in IndexedDB until the stage finishes.
-- Private R2 upload when configured; safe discard mode when it is not.
-- No real candidate records, company contact details, or cloud credentials.
+Secmentum is an open-source starter kit for internship assessment workflows. Companies can replace the sample brand, stages, durations, and questions through one JSON configuration file while keeping the candidate experience and recording pipeline intact.
 
-## How it works
+The project demonstrates the complete candidate journey: secure entry, sequential assessment stages, browser monitoring, consent-based camera and microphone recording, answer collection, and optional private Cloudflare R2 uploads.
+
+> [!IMPORTANT]
+> Secmentum is a technical demo, not a production hiring platform. It does not include an admin panel, database, scoring engine, tenant isolation, or automated hiring decisions.
+
+## Features
+
+| Capability | Description |
+| --- | --- |
+| Configurable assessments | Manage branding, stages, durations, and questions in `assessment.config.json` |
+| Sequential candidate flow | Lock later stages until the active stage is completed |
+| Timed sessions | Display a countdown and submit automatically when time expires |
+| Recording consent | Request camera and microphone access before recording begins |
+| Resilient recording | Store short MediaRecorder chunks in IndexedDB during the stage |
+| Optional private storage | Upload WebM recordings and answer reports to Cloudflare R2 |
+| Demo fallback | Run the full flow without cloud credentials and discard local recordings safely |
+| Assessment monitoring | Detect fullscreen exits, tab changes, and connection loss |
+
+## Technology
+
+- **Runtime:** Node.js 20+
+- **Server:** Express 5 and server-side sessions
+- **Frontend:** Vanilla HTML, CSS, and JavaScript
+- **Recording:** MediaRecorder API and IndexedDB
+- **Storage:** Cloudflare R2 through the AWS S3 SDK
+- **Tests:** Built-in `node:test` runner
+
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -39,7 +63,7 @@ flowchart LR
 Requirements: Node.js 20 or newer.
 
 ```bash
-git clone <your-repository-url>
+git clone <repository-url>
 cd secmentum
 npm install
 copy .env.example .env
@@ -49,6 +73,8 @@ npm start
 Open `http://localhost:2500` and use the development code `DEMO-ACCESS`.
 
 On macOS or Linux, replace the copy command with `cp .env.example .env`.
+
+No R2 configuration is required for local evaluation. The application reports demo mode and discards completed recordings after the flow finishes.
 
 ## Customize the assessment
 
@@ -94,6 +120,18 @@ Use an empty `options` array for a free-text response. Keep stage IDs sequential
 
 If all R2 values are absent, Secmentum stays usable in demo mode. Recording still runs locally, then the browser data is discarded instead of uploaded.
 
+## Project structure
+
+```text
+.
+├── assessment.config.json   # Brand, stages, durations, and sample questions
+├── server.js                # Express routes, sessions, validation, and R2 uploads
+├── public/                  # Candidate-facing pages, styles, and browser logic
+├── test/smoke.test.js       # End-to-end API and security smoke checks
+├── uploads/tmp/             # Temporary recording files; ignored by Git
+└── .env.example             # Safe environment-variable template
+```
+
 ## API
 
 | Method | Route | Purpose |
@@ -107,7 +145,7 @@ If all R2 values are absent, Secmentum stays usable in demo mode. Recording stil
 | `POST` | `/api/upload-answers` | Upload the text answer report |
 | `POST` | `/api/stage/complete` | Complete the active stage |
 
-## Privacy and production use
+## Security and privacy
 
 Recordings and assessment answers may be sensitive personal data. Before using Secmentum with real candidates:
 
@@ -117,7 +155,7 @@ Recordings and assessment answers may be sensitive personal data. Before using S
 4. Replace the in-memory session store and demo access-code authentication.
 5. Add tenant isolation, audit logging, rate limiting, and your jurisdiction's required privacy notices.
 
-Never commit `.env`, exported mailboxes, recordings, or candidate data. API errors intentionally omit infrastructure details.
+Never commit `.env`, exported mailboxes, recordings, or candidate data. API responses intentionally omit infrastructure details, and upload object keys use random candidate IDs instead of names or email addresses.
 
 ## Development
 
