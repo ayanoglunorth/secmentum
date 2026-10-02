@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assessment complete - Secmentum</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2300288e'/%3E%3Ctext x='50' y='65' font-size='45' text-anchor='middle' fill='white' font-family='sans-serif'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">Secmentum</div>
+        <div class="header-right">
+          <span id="userName" class="user-name"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Breadcrumb + Title exactly like dashboard -->
+      <div class="page-header">
+        <div class="breadcrumb">
+          <span>CANDIDATE ASSESSMENT</span>
+          <span class="material-symbols-outlined breadcrumb-chevron">chevron_right</span>
+          <span class="breadcrumb-active">COMPLETE</span>
+        </div>
+        <div class="page-title-row">
+          <h1 class="page-title">Assessment complete</h1>
+        </div>
+      </div>
+
+      <!-- Completion Card — matches stage-card design language -->
+      <div class="stage-card" style="margin-bottom: 32px;">
+        <div class="stage-card-inner">
+          <div class="stage-icon-block" style="background: var(--secondary);">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">verified_user</span>
+          </div>
+          <div class="stage-info">
+            <div class="stage-badge-row">
+              <span class="stage-number" style="color: var(--secondary);">ASSESSMENT</span>
+              <span class="stage-dot" style="background: var(--secondary);"></span>
+              <span class="stage-status-label stage-status-label--completed">COMPLETED</span>
+            </div>
+            <h2 class="stage-title">Thank you</h2>
+            <p class="instructions-body" style="margin-bottom: 0;">
+              You completed every sample assessment stage. You may now close this page.
+            </p>
+          </div>
+          <div class="stage-action">
+            <span class="btn-completed-stage">
+              <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">check_circle</span>
+              Completed
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Cards — same grid as dashboard -->
+      <div class="info-cards-grid">
+        <div class="info-card">
+          <span class="material-symbols-outlined info-card-icon">schedule</span>
+          <h4 class="info-card-title">Demo complete</h4>
+          <p class="info-card-body">This starter does not make hiring decisions or evaluate candidates automatically.</p>
+        </div>
+        <div class="info-card">
+          <span class="material-symbols-outlined info-card-icon">support_agent</span>
+          <h4 class="info-card-title">Storage</h4>
+          <p class="info-card-body">Recordings upload only when private R2 storage is configured.</p>
+        </div>
+        <div class="info-card info-card--primary">
+          <span class="material-symbols-outlined info-card-icon" style="font-variation-settings:'FILL' 1">info</span>
+          <h4 class="info-card-title">Privacy</h4>
+          <p class="info-card-body">Define consent, retention, and deletion policies before real use.</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-copy">Secmentum · Open-source assessment demo</p>
+      </div>
+    </footer>
+
+    <script>
+      // Load the candidate name for the shared header.
+      async function loadUser() {
+        try {
+          const response = await fetch('/api/dashboard');
+          if (response.status === 401) {
+            window.location.href = '/login';
+            return;
+          }
+          const data = await response.json();
+          const userNameEl = document.getElementById('userName');
+          if (userNameEl && data.user) {
+            userNameEl.textContent = data.user.fullName || data.user.email || '';
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      loadUser();
+    </script>
+  </body>
+</html>

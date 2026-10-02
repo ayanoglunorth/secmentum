@@ -1,0 +1,8 @@
+node_modules/
+.playwright-cli/
+.env*
+!.env.example
+*.mbox
+uploads/tmp/*
+!uploads/tmp/.gitkeep
+npm-debug.log*

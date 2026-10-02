@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Candidate sign in - Secmentum</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2300288e'/%3E%3Ctext x='50' y='65' font-size='45' text-anchor='middle' fill='white' font-family='sans-serif'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header class="login-header">
+      <div class="login-header-inner">
+        <div class="logo">Secmentum</div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="login-main">
+      <!-- Background split -->
+      <div class="login-bg-split" aria-hidden="true">
+        <div class="login-bg-left"></div>
+        <div class="login-bg-right"></div>
+      </div>
+
+      <!-- Card -->
+      <div class="login-card">
+        <!-- Left Panel -->
+        <div class="login-left">
+          <div>
+            <span class="login-eyebrow">INTERNSHIP ASSESSMENT</span>
+            <h1 class="login-headline">
+              A focused assessment experience for early-career talent.
+            </h1>
+            <p class="login-desc">
+              Enter your candidate details and assessment access code to continue.
+            </p>
+          </div>
+          <div class="login-left-footer">
+            <div class="login-left-rule"></div>
+            <p class="login-version">Customizable assessment demo</p>
+          </div>
+        </div>
+
+        <!-- Right Panel: Form -->
+        <div class="login-right">
+          <div class="login-form-header">
+            <h2 class="login-form-title">Candidate sign in</h2>
+            <p class="login-form-subtitle">Complete all fields to open your assessment.</p>
+          </div>
+
+          <form id="loginForm" class="login-form">
+            <div class="form-group">
+              <label class="form-label" for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" class="form-input" placeholder="Alex Morgan" maxlength="100" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email address</label>
+              <input id="email" name="email" type="email" class="form-input" placeholder="alex@example.com" maxlength="254" autocomplete="email" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="accessCode">Assessment access code</label>
+              <input id="accessCode" name="accessCode" type="text" class="form-input form-input--code" placeholder="DEMO-ACCESS" maxlength="64" autocomplete="off" required />
+            </div>
+
+            <div id="errorMessage" class="form-error hidden"></div>
+
+            <div class="form-submit">
+              <button type="submit" id="submitBtn" class="btn-login">
+                Start assessment
+                <span class="material-symbols-outlined btn-login-icon">arrow_forward</span>
+              </button>
+            </div>
+          </form>
+
+          <div class="login-secure-row">
+            <span class="material-symbols-outlined secure-icon" style="font-variation-settings:'FILL' 1">verified_user</span>
+            <p class="secure-label">Private session</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="login-footer">
+      <div class="login-footer-inner">
+        <p class="login-footer-copy">Secmentum · Open-source assessment demo</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/js/login.js"></script>
+  </body>
+</html>

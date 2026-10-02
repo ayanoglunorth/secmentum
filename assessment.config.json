@@ -1,0 +1,41 @@
+{
+  "brand": { "name": "Secmentum", "tagline": "A customizable internship assessment tool" },
+  "stages": [
+    {
+      "id": 1,
+      "title": "Work Style",
+      "durationMinutes": 5,
+      "questions": [
+        { "id": 1, "text": "A project brief is incomplete and the deadline is close. What do you do first?", "options": ["List the unknowns and confirm priorities with the owner", "Wait until every detail is supplied", "Start the most visible task without asking questions", "Hand the project to someone else"] },
+        { "id": 2, "text": "A teammate proposes an approach different from yours. How do you respond?", "options": ["Compare both approaches against the project goal", "Defend my approach without discussion", "Accept the new approach without reviewing it", "Avoid the decision"] },
+        { "id": 3, "text": "You notice a small mistake in work that has already been shared. What is your next step?", "options": ["Report it promptly with a proposed correction", "Ignore it because it is small", "Correct it silently without informing anyone", "Wait for someone else to notice"] },
+        { "id": 4, "text": "Two assigned tasks have the same deadline. How do you choose what to do first?", "options": ["Assess impact and urgency, then communicate the order", "Choose the easier task", "Switch between both tasks every few minutes", "Delay both until the priority is obvious"] },
+        { "id": 5, "text": "Describe one habit that helps you learn from feedback.", "options": [] }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "English Communication",
+      "durationMinutes": 5,
+      "questions": [
+        { "id": 1, "text": "Choose the clearest sentence for a professional status update.", "options": ["The draft is complete, and I will send it for review by 3 p.m.", "Draft done maybe review later.", "I am writing to inform you that perhaps the draft could be completed.", "The draft, which was drafted, has draft status."] },
+        { "id": 2, "text": "Complete the sentence: If I need clarification, I ___ the project owner before continuing.", "options": ["will ask", "asked", "asking", "have ask"] },
+        { "id": 3, "text": "Which response politely asks for more time?", "options": ["Could I send the revised version tomorrow morning?", "I cannot do this.", "You gave me too little time.", "Maybe later."] },
+        { "id": 4, "text": "A colleague writes: ‘Please share the figures before the meeting so I can update the slides.’ What do they need?", "options": ["The figures before the meeting", "The slides after the meeting", "A new meeting date", "A written project plan"] },
+        { "id": 5, "text": "Write a two-sentence update explaining that a task is delayed and when it will be ready.", "options": [] }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Problem Solving",
+      "durationMinutes": 5,
+      "questions": [
+        { "id": 1, "text": "A report takes 12 minutes to process. An improvement makes it 25% faster. How long does it take now?", "options": ["9 minutes", "10 minutes", "8 minutes", "11 minutes"] },
+        { "id": 2, "text": "What number comes next: 2, 6, 12, 20, 30, ?", "options": ["42", "40", "36", "44"] },
+        { "id": 3, "text": "Every approved request has a reference number. Request A has no reference number. Which conclusion is valid?", "options": ["Request A is not approved", "Request A was deleted", "Request A is approved", "No conclusion can be made"] },
+        { "id": 4, "text": "A team completes 18 checks in 3 hours at a steady rate. How many checks can it complete in 5 hours?", "options": ["30", "24", "27", "36"] },
+        { "id": 5, "text": "Explain how you would verify that a proposed solution addresses the original problem.", "options": [] }
+      ]
+    }
+  ]
+}
